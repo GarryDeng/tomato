@@ -1,0 +1,262 @@
+﻿@charset "UTF-8";
+*, img, ul, li, p {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    width: 10rem;
+    margin:0 auto;
+    overflow: hidden;
+    position: relative;
+}
+a {
+    text-decoration: none;
+}
+*:focus {
+    outline: none;
+}
+.clear::after{
+    content: '';
+    display: block;
+    clear: both;
+    height:0;
+    width: 0;
+    overflow: hidden;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.whole-content-width{
+    padding:1.2rem 0 1.5rem 0;
+}
+.whole-content-top{
+    padding-top:1.2rem;
+}
+.pd3{
+    padding:0 .3rem;
+}
+/*引入字体图标*/
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot');
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/iconfont.woff') format('woff'),
+    url('../font/iconfont.ttf') format('truetype'),
+    url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (min-width: 750px) {
+    html{
+        font-size: 75px!important;
+    }
+}
+/*头部*/
+
+.top-bg {
+    background-color: #ed629d;
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: .5rem;
+    left:0;
+    right:0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+
+.back {
+    width: .5rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    left: .3rem;
+    position: absolute;
+    font-size:.5rem;
+    color: #FFF;
+}
+
+.home {
+    width: .65rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    right: .3rem;
+    font-size:.65rem;
+    color: #FFF;
+    position: absolute;
+}
+/*商家底部导航*/
+
+.fx{
+    background:url(../images/fengx_01.png) no-repeat center 8px #FFFFFF;
+    background-size:22px 22px;
+    color:#999999;
+}
+.fx2{
+    background:url(../images/fengx_01.png) no-repeat center 8px #f1f0f0;
+    background-size:22px 22px;
+    color:#999999;
+}
+.fx1{
+    background:url(../images/fengx_02.png) no-repeat center 8px #FFFFFF;
+    background-size:22px 22px;
+    color:#ad0126;
+}
+
+/*会员底部导航*/
+
+.gwc_bottom{
+    width:100%;
+    height:1.2rem;
+    position:fixed;
+    font-size:.38rem;
+    bottom:0;
+    z-index:999;
+    left: 0;
+    right:0;
+    background-color: #FFF;
+}
+.gwc_bottom::before{
+    content: '';
+    display: block;
+    position: absolute;
+    background-color:#dedede;
+    left:0;
+    right:0;
+    top:0;
+    height: 1px;
+    width: 100%;
+    -webkit-transform: scaleY(.3333333333333);
+    -moz-transform: scaleY(.3333333333333);
+    -ms-transform: scaleY(.3333333333333);
+    -o-transform: scaleY(.3333333333333);
+    transform: scaleY(.3333333333333);
+    -webkit-transform-origin:left top;
+    -moz-transform-origin:left top;
+    -ms-transform-origin:left top;
+    -o-transform-origin:left top;
+    transform-origin:left top;
+}
+.gwc_bottom li{
+    width:25%;
+    text-align:center;
+    float:left;
+    cursor: pointer;
+    position: relative;
+}
+.gwc_bottom li::before{
+    content: '';
+    display: block;
+    position: absolute;
+    border-right:1px solid #dedede;
+    top:0;
+    bottom:0;
+    height:100%;
+    width: 0;
+    right:0;
+    -webkit-transform: scaleX(.333333333333);
+    -moz-transform: scaleX(.333333333333);
+    -ms-transform: scaleX(.333333333333);
+    -o-transform: scaleX(.333333333333);
+    transform: scaleX(.333333333333);
+}
+.gwc_bottom li .iconfont{
+    font-size: .38rem;
+    padding-top:.15rem;
+    line-height: .45rem;
+    height:.7rem;
+    color: #564e4e;
+}
+.gwc_bottom li a{
+    display: block;
+    line-height:.5rem;
+    height:.5rem;
+    color: #564e4e;
+    font-size:.32rem;
+}
+.gwc_bottom li.active a,.gwc_bottom li.active .iconfont{
+    color: #ed629d;
+}
+
+/***加载*****/
+
+.whole-loading{
+    position: fixed;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+    bottom:0;
+    top:0;
+    z-index: 99999;
+}
+.whole-loading span{
+    -webkit-animation:myloading .8s ease infinite;
+    -o-animation:myloading .8s ease infinite;
+    animation:myloading .8s ease infinite;
+    color: #000;
+    display: block;
+    position: fixed;
+    left:0;
+    right:0;
+    width: 50px;
+    height:50px;
+    top:0;
+    bottom:0;
+    margin:auto;
+    font-size:32px;
+    text-align: center;
+    line-height:50px;
+    -webkit-transform-origin:center center;
+    -moz-transform-origin:center center;
+    -ms-transform-origin:center center;
+    -o-transform-origin:center center;
+    transform-origin:center center;
+}
+@keyframes myloading{
+    from{
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes myloading{
+    from{
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform:rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>编辑商品信息</title>
+	<!-- <link rel="stylesheet" href="../node_modules/.3.3.7@bootstrap/dist/css/bootstrap.min.css"/> -->
+  <script src="../../js/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../css/comment.css"/>
+	<link rel="stylesheet" href="../css/goods.css"/>
+</head>
+<body>
+  <div class="page-header">
+    <h1>编辑商品信息</h1>
+  </div>
+  <form class="body">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品ID</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+    </div>
+		<div class="input-group input-group-lg">
+      <span class="input-group-addon">商品类别</span>
+      <select>
+        <option value="">奶粉</option>
+        <option value="">尿布</option>
+        <option value="">妈咪用品</option>
+        <option value="">婴儿用品</option>
+      </select>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品标题</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品价格</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品图片</span>
+      <input name="imgfile" type="file" class="upImg" accept="image/gif, image/jpeg"/>
+      <div class="showImg"></div>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品详情</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+    </div>
+		<div class="bottomButton">
+	    <a href="goods.html"><button type="button" class="btn btn-default">取消</button></a>
+	    <a href=""><button type="button" class="btn btn-default">保存</button></a>
+		</div>
+  </form>
+<script type="text/javascript">
+	$('.upImg').change(function(){
+		if(!/image\/\w+/.test($(this)[0].files[0].type)){
+			alert("请确保上传文件为图片");
+			return false;
+		}
+		else if($(this)[0].files[0].type == 'undefined'){
+			return false;
+		}
+		var imgFile = new FileReader();
+		imgFile.readAsDataURL($(this)[0].files[0]);
+		imgFile.onload = function(){
+			var imgData = this.result;
+			$('.showImg').html("<img id='img' src='" + imgData + "'/>");
+		}
+	})
+</script>
+</body>
+</html>

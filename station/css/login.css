@@ -1,0 +1,14 @@
+.loginForm{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  margin-top: -150px;
+  left: 50%;
+  margin-left: -150px;
+  padding: 30px;
+  background: #c5f3f3;
+}
+.widthPer {
+  width: 100%;
+}

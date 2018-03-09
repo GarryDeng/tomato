@@ -1,0 +1,20 @@
+<index-header></index-header>
+<div class="container3 center">
+    <div class="c_box" ng-repeat="x in data">
+        <div class="sw_l f_l">
+            <div class="sw_pic"><img ng-src={{x.result.data_img}} />
+
+                <div class="sw_bottom" ng-bind="'￥'+x.result.data_price+'.00'">￥98</div>
+            </div>
+        </div>
+        <div class="sw_2 f_l">
+            <div class="sw_2_c" ng-bind="x.result.data_title">NBLD新西兰优质奶粉（优质奶源富含丰富DHA）</div>
+            <div class="sw_2_c f_l" ng-click="removeFavorite(x.favoriteId)">移除收藏</div>
+        </div>
+        <div class="sw_3_pic f_l" ng-click="addCart(x.favoriteId)"><img src="../images/nav_03.png"/></div>
+        <div class="clear"></div>
+    </div>
+    <p ng-if="data.length==0" style="text-align: center">没有收藏的商品</p>
+</div>
+<!-- 底部-->
+<index-footer></index-footer>

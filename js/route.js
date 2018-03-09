@@ -1,0 +1,100 @@
+/**
+ * Created by some on 2017/4/19.
+ */
+var InfantStore = angular.module("InfantStore",['ngRoute','angularCSS','angular-loading-bar']);
+InfantStore.config(function($routeProvider,cfpLoadingBarProvider,$httpProvider){
+    $httpProvider.defaults.transformRequest = function(obj){
+        var str = [];
+        for(var p in obj){
+            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+        }
+        return str.join('&');
+    };
+    $httpProvider.defaults.headers.post = {
+        'Content-Type':'application/x-www-form-urlencoded'
+    };
+    cfpLoadingBarProvider.spinnerTemplate = '<div class="whole-loading"><span class="iconfont">&#xe61f;</span></div>';
+    $routeProvider
+        .when('/',{
+            templateUrl:'../controller/index.html',
+            controller:'Index'
+        })
+        .when('/register',{
+            templateUrl:'../controller/register.html',
+            controller:'Register',
+            css:['../css/login.css','../css/bootstrap.min.css']
+        })
+        .when('/login',{
+            templateUrl:'../controller/login.html',
+            controller:'Login',
+            css:['../css/login.css','../css/bootstrap.min.css']
+        })
+        .when('/cart',{
+            templateUrl:'../controller/cart.html',
+            controller:'Cart',
+            css:'../css/PoultrySale.css'
+        })
+        .when('/user',{
+            templateUrl:'../controller/user.html',
+            controller:'User',
+            css:['../css/index.css']
+        })
+        .when('/contact',{
+            templateUrl:'../controller/contact.html',
+            controller:'Contact',
+            css:['../css/lxwm.css']
+        })
+        .when('/confirmOrder',{
+            templateUrl:'../controller/confirmOrder.html',
+            controller:'ConfirmOrder',
+            css:['../css/PoultrySale.css']
+        })
+        .when('/addressList',{
+            templateUrl:'../controller/addressList.html',
+            controller:'AddressList',
+            css:['../css/component.css']
+        })
+        .when('/newAddress',{
+            templateUrl:'../controller/newAddress.html',
+            controller:'NewAddress',
+            css:['../css/component.css']
+        })
+        .when('/newAddress/:id',{
+            templateUrl:'../controller/newAddress.html',
+            controller:'CompileAddress',
+            css:['../css/component.css']
+        })
+        .when('/favorites',{
+            templateUrl:'../controller/favorites.html',
+            controller:'Favorites',
+            css:['../css/css.css']
+        })
+        .when('/allOrder',{
+            templateUrl:'../controller/allOrder.html',
+            controller:'AllOrder'
+        })
+        .when('/awaitPay',{
+            templateUrl:'../controller/allOrder.html',
+            controller:'AwaitPay'
+        })
+        .when('/awaitGoods',{
+            templateUrl:'../controller/allOrder.html',
+            controller:'AwaitGoods'
+        })
+        .when('/completeGoods',{
+            templateUrl:'../controller/allOrder.html',
+            controller:'CompleteGoods'
+        })
+        .when('/details/:id',{
+            templateUrl:'../controller/details.html',
+            controller:'Details',
+            css:['../css/lxwm.css']
+        })
+        .when('/pay/:id',{
+            templateUrl:'../controller/pay.html',
+            controller:'Pay'
+        })
+        .otherwise({
+            redirectTo:'/'
+        });
+});

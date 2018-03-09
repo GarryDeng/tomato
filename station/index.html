@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>首页</title>
+  <link rel="stylesheet" href="css/goods.css"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+  <link href="/favicon.ico" rel="shortcut icon" />
+  <script src="../js/jquery.min.js"></script>
+	<script src="../js/angular.min.js"></script>
+  <script src="../js/angular-route.min.js"></script>
+</head>
+<body ng-app='mystation'>
+	<div ng-view></div>
+</body>
+<script src="./js/route.js"></script>
+<script src="./js/title.js"></script>
+<script src="./js/controller.js"></script>
+<script>
+function cancel_login(){
+  $.post('/cancel_user',function(data){
+    if(data.code == 1){
+      alert('已退出登录！');
+      location.reload();
+    }
+  });
+}
+</script>
+</html>

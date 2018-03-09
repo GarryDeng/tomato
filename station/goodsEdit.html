@@ -1,0 +1,112 @@
+<index-header></index-header>
+  <div class="page-header">
+    <h1>编辑商品信息</h1>
+  </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">商品ID</span>
+      <input type="text" id="data_id" ng-disabled="goodsList.dataId" onkeyup="checkId(this.value)" value={{goodsList.dataId}} class="form-control" placeholder="请输入5位数字" aria-describedby="sizing-addon1">
+    </div>
+    <p class="idError"></p>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">商品标题</span>
+      <input type="text" id='data_title' onkeyup="checkTitle(this.value)" value={{goodsList.data_title}} class="form-control" placeholder="请输入商品标题" aria-describedby="sizing-addon1">
+    </div>
+    <p class="titleError"></p>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">商品价格（元）</span>
+      <input id='data_price' value={{goodsList.data_price}} type="number" class="form-control" placeholder="请输入商品价格" aria-describedby="sizing-addon1">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" >商品图片</span>
+      <input name="imgfile" type="file" class="upImg" accept="image/gif, image/jpeg"/>
+      <div class="showImg"><img ng-if="goodsList.data_img" ng-src={{goodsList.data_img}}  /></div>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">商品详情</span>
+      <input type="text" id="data_details"  value={{goodsList.data_details}} class="form-control" placeholder="请描述商品信息" aria-describedby="sizing-addon1">
+    </div>
+		<div class="bottomButton">
+	    <a href="#/goods"><button type="button" class="btn btn-default">取消</button></a>
+	    <a href="javascript:"><button type="button" id='submit' ng-click="goodsDetails()" class="btn btn-default">保存</button></a>
+		</div>
+<script type="text/javascript">
+  function checkTitle(value){
+    if(value.length>20) {
+      $(".titleError").html('标题不能超过20位字符串');
+      return;
+    }
+    else {
+      $(".titleError").html('');
+    }
+  }
+  function checkId(value){
+    var reg = /^\d{5}$/;
+    if(!reg.test(value)){
+      $(".idError").html("请输入5位数字的ID");
+      return;
+    }
+    else{
+      $(".idError").html("");
+    }
+  }
+	$('.upImg').change(function(){
+		if(!/image\/\w+/.test($(this)[0].files[0].type)){
+			alert("请确保上传文件为图片");
+			return false;
+		}
+		else if($(this)[0].files[0].type == 'undefined'){
+			return false;
+		}
+		var imgFile = new FileReader();
+		imgFile.readAsDataURL($(this)[0].files[0]);
+		imgFile.onload = function(){
+			var imgData = this.result;
+			$('.showImg').append("<img id='data_img' src='" + imgData + "'/>");
+		}
+	});
+
+  function id(id){
+		var reg = /^\d{5}$/;
+		return reg.test(id);
+	}
+  function editGoodsDetails(){
+    var dataId = $("#data_id").val();//商品Id
+    var data_title = $("#data_title").val();//商品标题
+    var data_img = $(".showImg img").attr("src");//商品图片
+    var data_details = $("#data_details").val();
+    var data_price = $("#data_price").val();
+    $.post('/edit/goods/details',{dataId:dataId,data_title:data_title,data_price:data_price,data_details:data_details,data_img:data_img},function(data){
+      if(data.code==0){
+        location.href = '/station/login.html';
+      }else if(data.code==1){
+        alert(data.message);
+        location.href = '#/goods';
+      }else{
+        alert(data.message);
+      }
+    });
+  }
+  function addGoods(){
+      var dataId = $("#data_id").val();//商品Id
+      var data_title = $("#data_title").val();//商品标题
+      var data_img = $(".showImg img").attr("src");//商品图片
+      var data_details = $("#data_details").val();
+      var data_price = $("#data_price").val();
+      var idError = $('.idError').html();
+      var titleError = $('.titleError').html();
+      if (!dataId || !data_title || !data_img || !data_details || !data_price || idError || titleError) {
+        alert ('请检查输入框');
+        return;
+      }
+      $.post('/add_goods',{dataId:dataId,data_title:data_title,data_price:data_price,data_details:data_details,data_img:data_img},function(data){
+          if(data.code==0){
+              location.href = '/station/login.html';
+          }else if(data.code==1){
+              alert(data.message);
+              location.href = '#/goods';
+          }else{
+              alert(data.message);
+          }
+      });
+  }
+</script>

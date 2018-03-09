@@ -1,0 +1,23 @@
+<index-header></index-header>
+<div class="whole-content-width new-address-top">
+    <div class="white-bg paid-pro">
+        <div class="mb10 clearfix">
+            <div class="name-pic fl"></div>
+            <input class="attr-inp fl user-name" value={{singleAddress.userName}} type="text" placeholder="请填写收货人姓名" style="color: #a8abac;">
+        </div>
+        <div class="mb10 clearfix">
+            <div class="attr-pic fl"></div>
+            <div class="w85 fl"><textarea class="attr-txt" value={{singleAddress.detailedAddress}} placeholder="请填写收货人详细地址"></textarea></div>
+        </div>
+        <div class="mb10 clearfix">
+            <div class="tel-pic fl"></div>
+            <input class="attr-inp fl call-number" value={{singleAddress.callNumber}} type="text" placeholder="请填写收货人电话" />
+        </div>
+    </div>
+    <div class="attr-wan" ng-click="postNewAddress();">
+        <i class="inco12 attr-inco"></i>
+        完成编辑
+    </div>
+</div>
+<!-- 底部-->
+<index-footer></index-footer>

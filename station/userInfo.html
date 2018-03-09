@@ -1,0 +1,23 @@
+<index-header></index-header>
+  <div class="page-header">
+    <h1>用户信息</h1>
+  </div>
+  <div class="search">
+		<label>姓名</label>
+	  <input type="text" class="form-control" ng-model="email" placeholder="">
+	  <button class="input-group-addon" id="userSearch" ng-click="searchStationEmail(email)">查询</button>
+	</div>
+  <div class="body">
+    <div class="panel panel-default">
+      <!-- Table -->
+      <table class="table">
+        <tr>
+          <th>ID</th><th>账号</th>
+        </tr>
+        <tr ng-repeat="x in goodsList">
+          <td ng-bind="x._id"></td>
+          <td ng-bind="x.email"></td>
+        </tr>
+      </table>
+    </div>
+  </div>

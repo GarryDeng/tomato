@@ -1,0 +1,56 @@
+<index-header></index-header>
+<div class="whole-content-top">
+    <div class="xiangqing" ng-repeat="x in cartList">
+        <img ng-src={{x.goodsImg}} class="gw_t_01"/>
+        <div class="right_text">
+            <div class="right_text_text1" ng-bind="x.data_title"></div>
+            <div class="jiage1" ng-bind="'￥'+x.data_price"></div>
+            <div class="text1">
+                <ul>
+                    <li class="cor jian" ng-click="reduceCart(x.goodsId)">-</li>
+                    <li class="count" ng-bind="x.goodsNumber"></li>
+                    <li class="cor jia" ng-click="addCart(x.goodsId)">+</li>
+                </ul>
+            </div>
+        </div>
+        <div class="fr">
+            <div class="text1 size">数量X1</div>
+            <div class="text1" ng-click="deleteCart(x.goodsId)">
+                <img  src="../images/del.jpg"/>
+            </div>
+        </div>
+    </div>
+    <h1 ng-if="cartList.length==0" style="text-align: center;">购物车没有商品！</h1>
+
+    <div class="gwc_bottom" ng-if="cartList.length!=0">
+        <div class="heiji">
+            合计:
+            <span class="span" ng-bind="'￥'+total+'.00'">￥null</span>
+        </div>
+        <div class="jiesuan" onclick="location.href='#/confirmOrder'">结算</div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".onselect1").click(function(){
+        $(this).toggleClass("onIt");
+    });
+    $(".jian").click(function(){
+        var count=parseInt($(this).siblings(".count").text());
+        $(this).siblings(".count").text(count-1);
+
+        if(parseInt($(this).siblings(".count").text())<2){
+
+            $(this).siblings(".count").text("1");
+            $(this).removeClass("back01").siblings(".jia").removeClass("back01");
+        }
+    });
+    $(".jia").click(function(){
+        var count=parseInt($(this).siblings(".count").text());
+        $(this).siblings(".count").text(count+1);
+
+        if(parseInt($(this).siblings(".count").text())>1){
+
+            $(this).addClass("back01").siblings(".jian").addClass("back01");
+        }
+    });
+</script>

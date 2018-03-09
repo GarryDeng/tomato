@@ -1,0 +1,28 @@
+<index-header></index-header>
+<div class="whole-content-width">
+    <div class="today-title">
+        <div class="h-3">新品专区</div>
+        <div class="today-tl">— 超值好货 限量抢购 —</div>
+    </div>
+    <div class="clear content-index-goods">
+        <div class="fl prodoct"  ng-repeat="x in goods">
+            <div class="man"><img src="../images/man.png"></div>
+            <div class="white-bg paid">
+                <a ng-href="#/details/{{x.dataId}}"><img ng-src={{x.data_img}} class="goodsImg"></a>
+                <div class="guide-text">
+                    <p class="guide-title" ng-bind="x.data_title"></p>
+                    <p class="controller-index-cart">
+                        <span class="fl guide-price" ng-bind="'￥'+x.data_price"></span>
+                        <span class="fr" ng-click="addCart(x.dataId)">
+                            <i class="iconfont">&#xe602;</i>
+                            添加
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="more">人家是有底限的</div>
+</div>
+<index-footer></index-footer>

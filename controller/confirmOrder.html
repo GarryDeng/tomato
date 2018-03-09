@@ -1,0 +1,44 @@
+<index-header></index-header>
+<div class="whole-content-top">
+    <div class="shouhuo">收货信息</div>
+    <div class="add_bottom" onclick="location.href='#/addressList'">
+        <div class="add1">
+            <div class="add_text">
+                <span ng-bind="orderAddress.result.userName">用户名</span>
+                <span ng-bind="orderAddress.result.callNumber">手机号</span>
+            </div>
+            <div class="add_text" ng-bind="orderAddress.result.detailedAddress">
+                收货地址
+            </div>
+        </div>
+        <div class="add2">
+            <a href=""><img src="../images/turnright.png"/></a>
+        </div>
+    </div>
+    <div class="mt10"></div>
+    <h1 ng-if="orderGoods.code==2">购物车没有商品</h1>
+    <div class="xiangqing" ng-repeat="x in orderGoods.res">
+        <img ng-src={{x.goodsImg}} />
+        <div class="right_text">
+            <div class="text1" ng-bind="x.data_title">纽斯兰奶粉</div>
+            <div class="jiage1" ng-bind="'￥'+x.data_price">188.00</div>
+        </div>
+        <div class="del">
+            <div class="text1 size" ng-bind="'数量X'+x.goodsNumber">数量X1</div>
+        </div>
+    </div>
+    <div class="jianshu">
+        共{{orderGoods.res.length}}件商品，合计<span class="span" ng-bind="'￥'+orderGoods.total">￥366.00</span>
+    </div>
+    <div class="peison">
+        <span>配送方式</span>
+        <div class="ps">快递免邮</div>
+    </div>
+</div>
+<div class="gwc_bottom">
+    <div class="heiji">
+        合计
+        <span class="span" ng-bind="'￥'+orderGoods.total">￥366.00</span>
+    </div>
+    <div class="jiesuan" ng-click="createOrder();">提交订单</div>
+</div>

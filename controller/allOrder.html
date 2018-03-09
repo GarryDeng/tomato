@@ -1,0 +1,31 @@
+<index-header></index-header>
+<div class="whole-content-width">
+    <ul class="paid clear">
+        <li onclick="javascript:window.location.href='#/allOrder'"><p ng-class="{true:'paid-active'}[locationUrl=='/allOrder']">全部订单</p></li>
+        <li onclick="javascript:window.location.href='#/awaitPay'"><p ng-class="{true:'paid-active'}[locationUrl=='/awaitPay']">待付款</p></li>
+        <li onclick="javascript:window.location.href='#/awaitGoods'"><p ng-class="{true:'paid-active'}[locationUrl=='/awaitGoods']">待收货</p></li>
+        <li onclick="javascript:window.location.href='#/completeGoods'"><p ng-class="{true:'paid-active'}[locationUrl=='/completeGoods']">已完成</p></li>
+    </ul>
+    <h1 ng-if="data.length==0" style="text-align: center;">没有相关订单信息!</h1>
+    <div class="pd3" ng-repeat="x in data">
+        <div class="paid-style white-bg">
+            <div class="fl paid-time" ng-bind="x.newTime">2015-09-03 13:55</div>
+            <div class="fr" ng-bind="x.typeText">待评价</div>
+        </div>
+        <div class="clear" ng-repeat="y in x.goods.res">
+            <div class="paid-pic fl"><img ng-src={{y.goodsImg}} /></div>
+            <div class="fl paid-rgh clear">
+                <div class="fl paid-text" ng-bind="y.data_title"></div>
+                <div class="paid-sum fl" ng-bind="'×'+y.goodsNumber">×2</div>
+                <div class="fr paid-jia" ng-bind="'￥'+y.data_price">￥66.00</div>
+            </div>
+        </div>
+        <div class="white-bg paid-zong">
+            <div class="fl paid-all" ng-bind="'￥'+x.goods.total+'.00 (运费￥0.00)'">￥217.00 (运费￥0.00)</div>
+            <div class="fr" ng-if="x.type==1"><a ng-href="#pay/{{x.orderId}}" class="paid-btn">立即付款</a></div>
+            <div class="fr" ng-if="x.type==2" ng-click="confirmOrder(x.orderId)"><a class="paid-btn">确认签收</a></div>
+        </div>
+    </div>
+</div>
+<!-- 底部-->
+<index-footer></index-footer>

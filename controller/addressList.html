@@ -1,0 +1,26 @@
+<index-header></index-header>
+<div class="whole-content-width">
+    <div style="position: relative;z-index: -1;">
+        <img src="../images/attr.jpg" width="100%">
+    </div>
+    <div class="attrmt">
+        <h1 ng-if="code==1001" style="text-align: center;margin-top: 38px;">暂无地址信息</h1>
+        <div ng-if="code!=1001" class="attr-bg clearfix" ng-repeat="x in addressList">
+            <div class="w84" ng-click="defaultAddress(x.addressId)">
+                <div class="detail-pattr" ng-bind="x.userName">用户名</div>
+                <div class="detail-pattr" ng-class={true:'attr-mo'}[x.setting] ng-bind="x.detailedAddress">用户地址</div>
+                <div class="detail-phone" ng-bind="x.callNumber">手机号码</div>
+            </div>
+            <div class="clear">
+                <div class="fl attr-bian" ng-click="getAddress(x.addressId)"></div>
+                <div class="attr-del fr"  ng-click="deleteAddress(x.addressId)">删除</div>
+            </div>
+        </div>
+    </div>
+    <div class="attr-wan" onclick="location.href='#/newAddress'">
+        <i class="add-inco"></i>
+        添加新地址
+    </div>
+</div>
+<!-- 底部-->
+<index-footer></index-footer>

@@ -1,0 +1,8 @@
+<ul class="nav nav-pills" style="border-bottom:#CCC solid 1px" ng-controller='nav'>
+    <li role="presentation" ng-class="{true:'active'}[loactionUrl=='/'||loactionUrl=='']"><a class='l' href="#/">首页</a></li>
+    <li role="presentation" ng-class="{true:'active'}[loactionUrl=='/goods']"><a class='l' href="#/goods">商品管理</a></li>
+    <li role="presentation" ng-class="{true:'active'}[loactionUrl=='/userInfo']"><a class='l' href="#/userInfo">用户管理</a></li><li role="presentation" ng-class="{true:'active'}[loactionUrl=='/order']"><a class='l' href="#/order">订单管理</a></li>
+    <li ng-if="code==1" role="presentation" style="float:right"><a href='javascript:cancel_login();'> 退出</a></li>
+    <li ng-if="code==0" role="presentation" style="float:right"><a href='login.html'> 登录</a></li>
+    <li ng-if="code==1" role="presentation" style="float:right"><a> 欢迎,超级管理员</a></li>
+</ul>

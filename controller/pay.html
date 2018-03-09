@@ -1,0 +1,79 @@
+<index-header></index-header>
+<style>
+    .showImg img{
+        width: 5rem;
+        margin: 0 auto;
+        display: block;
+    }
+    .up-img{
+        position: relative;
+        margin: .3rem;
+    }
+    .up-img input{
+        opacity: 0;
+        width: 3rem;
+        height: 1rem;
+        position: relative;
+        z-index: 9;
+    }
+    .up-img button{
+        position: absolute;
+        z-index: 8;
+        top: 0;
+        left: 0;
+        width: 3rem;
+        height: 1rem;
+        line-height: 1rem;
+        text-align: center;
+        color: #FFF;
+        background-color: #f5c520;
+        border: none;
+        border-radius: .15rem;
+    }
+</style>
+<div class="new-address-top">
+    <div style="padding-left:.3rem">订单编号：<span id="order_id">{{orderId}}</span></div>
+    <div style="padding-left:.3rem">付款金额：￥<span id="total" style='color:red'>{{total}}</span></div>
+    <img style="display:block;width:5rem;margin:0 auto" src="../images/alipay.jpg" alt="">
+    <div style="text-align:center;line-height:2.6em;font-size:.5rem;">支付宝扫一扫付款</div>
+    <div style="padding-left:.3rem;line-height:2.6em;">付款成功后，请填写订单号，或，上传订单号截图</div>
+    <input id="order_number" style="display:block;padding:0 .3rem;margin:0 auto;width:9.4rem;line-height:.88rem;height:.88rem;border:1px solid #999;border-radius:.15rem;" placeholder='请输入转账后支付宝-订单号，如要留言，订单号加&&留言' type="text">
+    <div class="up-img">
+        <input class="upImg" type="file" />
+        <button>上传图片</button>
+    </div>
+    <div class="showImg"></div>
+    <div style="padding-left:.3rem;line-height:2.6em;">示例</div>
+    <img style="width:10rem;display:block;margin:.3rem auto;" src="../images/code-hint.jpg" alt="">
+</div>
+<button onclick="postOrderState(event)" style="z-index:999;bottom:0;display:block;width:10rem;position:fixed;left:0;height:1rem;color:#FFF;background-color:red;line-height:1rem;border:none;">提交</button>
+<script>
+    function postOrderState(event) {
+        event.preventDefault();
+        console.log($('.upImg')[0].files[0])
+        if($('#order_number').val()=='' && $('.upImg')[0].files[0] == 'undefined') return alert('请传入转账凭证哟~亲');
+        $.post('../station/order/message',{
+            order_id: $('#order_id').text(),
+            total: $('#total').text(),
+            order_number: $('#order_number').val(),
+            imgUrl: $('.upImg')[0].files[0],
+        },function (data) {
+            console.log(data)
+        })
+    }
+    $('.upImg').change(function () {
+        if (!/image\/\w+/.test($(this)[0].files[0].type)) {
+            alert("请确保上传文件为图片");
+            return false;
+        }
+        else if ($(this)[0].files[0].type == 'undefined') {
+            return false;
+        }
+        var imgFile = new FileReader();
+        imgFile.readAsDataURL($(this)[0].files[0]);
+        imgFile.onload = function () {
+            var imgData = this.result;
+            $('.showImg').html("<img id='data_img' src='" + imgData + "'/>");
+        }
+    });
+</script>

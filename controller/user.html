@@ -1,0 +1,63 @@
+<index-header></index-header>
+<div class="whole-content-width">
+    <div class="mCenter">
+        <div class="cnt pt20">
+            <div class="mcenter-tou">
+                <span class="mCenter-toubg"><img src="../images/tou.jpg" width="80" height="80"></span>
+            </div>
+            <div class="pt5">
+                <span class="mCenter-name" ng-bind="userName">MARILYN</span>
+                <!--<span class="mCenter-level">LV1</span>-->
+            </div>
+            <div class="pt40">
+                <ul class="mgooze">
+                    <li onclick="location.href='#/allOrder'">
+                        <a class="rel">
+                            <img src="../images/mgooze1.png" width="50" height="50">
+                        </a>
+                        <p class="mgooze-p">全部订单</p>
+
+                    </li>
+                    <li class="mgooze-pic2 rel" onclick="location.href='#/awaitPay'">
+                        <a class="rel">
+                            <img src="../images/mgooze2.png" width="50" height="50">
+                        </a>
+                        <p class="mgooze-p">待付款</p>
+                    </li>
+                    <li class="mgooze-pic3 rel" onclick="location.href='#/awaitGoods'">
+                        <a class="rel">
+                            <img src="../images/mgooze3.png" width="50" height="50">
+                        </a>
+                        <p class="mgooze-p">待收货</p>
+                    </li>
+                    <li class="mgooze-pic4 rel" onclick="location.href='#/completeGoods'">
+                        <a class="rel">
+                            <img src="../images/mgooze4.png" width="50" height="50">
+                        </a>
+                        <p class="mgooze-p">已完成</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mt10"></div>
+    <div class="white-bg">
+        <div class="mCenter-guan">
+            <ul>
+                <li class="guanpic1" onclick="location.href='#/favorites'">
+                    <span class="guanpic-span ml10">我收藏的商品</span>
+                    <div class="guanpic"><img src="../images/m_gl_07.png"></div>
+                </li>
+                <li class="guanpic2" onclick="location.href='#/addressList'">
+                    <span class="guanpic-span ml10">我的收货地址管理</span>
+                    <div class="guanpic"><img src="../images/m_gl_07.png"></div>
+                </li>
+                <!-- <li class="guanpic5">
+                    <span class="guanpic-span ml10">意见反馈</span>
+                    <div class="guanpic"><img src="../images/m_gl_07.png"></div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <button type="button" class="btn-danger" ng-click="logout()">退出登录</button>
+</div>

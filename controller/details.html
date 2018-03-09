@@ -1,0 +1,37 @@
+<index-header></index-header>
+<header class="scroll_pic_view whole-content-top">
+    <ul>
+        <li><a><img ng-src={{goodsList.data_img}} width="100%"></a></li>
+    </ul>
+</header>
+<div class="spwid_98">
+    <div class="spziti_01 mt10" ng-bind="goodsList.data_title">NSLD纽贝兰朵进口优质奶粉（DHA配方）</div>
+    <div class="spmar_20">
+        <div class="f_l spziti_03" ng-bind="'￥'+goodsList.data_price"><span class="spziti_04"></span>188.00
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="div_f3"></div>
+<div class="spwid_98 clear">
+    <div class="spbk_01">
+        <div class="fl spziti_06_2">平台担保交易</div>
+        <div class="fr spziti_06_1">七天退换货</div>
+    </div>
+</div>
+<div class="spbk_02">商品详情</div>
+<div class="clear pd3">
+    <p class="fl spbk_03">满5斤广东省内包邮</p>
+    <!-- <p class="fr spwid_80">2017年7月21日 — 2017年11月30日包邮<span class="spziti_7">(全国)</span></p> -->
+</div>
+<div class="spwid_98 spbk_04">
+    <div class="spziti_8">图文详情:</div>
+    <p ng-bind="goodsList.data_details"></p>
+</div>
+<div class="spbj_f3">人家是有底限的</div>
+<ul class="spbk_05 clear">
+    <!--<li class="bk5li_1 f_l">分享</li>-->
+    <li class="bk5li_2 fl" ng-click="addFavorite()">收藏</li>
+    <li class="bk5li_4 fr"><a ng-click="payCart()">立即购买</a></li>
+    <li class="bk5li_3 fr" ng-click="addCart()">加入购物车</li>
+</ul>
