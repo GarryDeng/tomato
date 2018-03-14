@@ -16,7 +16,7 @@ module.exports = function(app,MongoClient,DB_URL) {
     app.get('/station/user', admin.getUser);//获取注册用户信息
     app.get('/station/order/list', admin.getGoodsList);//获取订单列表信息
     app.post('/login_user',urlencodedParser,admin.adminLogin);//管理员登录接口
-    app.post('/edit/goods/details',urlencodedParser,admin.editGoodsDetails);//修改商品信息
+    app.post('/edit/goods/details', urlencodedParser, admin.editGoodsDetails);//修改商品信息
     app.get('/search/goods/name',urlencodedParser,admin.searchGoodsName);//查找商品信息
     app.get('/search/station/email',urlencodedParser,admin.searchStationEmail);//查找用户信息
 };

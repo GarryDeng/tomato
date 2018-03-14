@@ -29,4 +29,5 @@ module.exports = function(app){
     app.post('/station/edit/order',urlencodedParser,adminModule.editOrder);//编辑订单接口
     app.post('/station/add/favorite',urlencodedParser,adminModule.addFavorite);//添加收藏商品接口
     app.post('/station/remove/favorite',urlencodedParser,adminModule.removeFavorite);//移除收藏商品接口
+    app.post('/edit/order/message', urlencodedParser, adminModule.addOrderMessage);//提交付款信息
 };

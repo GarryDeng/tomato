@@ -272,6 +272,7 @@ exports.login = function(req,res){//普通用户登录页面
                 res.json({code:0,message:"账号密码错误!"});
             }else{
                 req.session.lastPage = cursor;
+                console.log(cursor)
                 res.json({code:1,message:"登录成功！"});
             }
         });
@@ -468,6 +469,36 @@ exports.editOrder = function(req,res){
         });
     } else {
         res.json({code: 0, message: "请登录！"});
+    }
+};
+//修改订单信息
+exports.addOrderMessage = function (req, res) {
+    if (req.session.lastPage) {
+        MongoClient.connect(DB_URL, function (error, db) {//连接数据库
+            var devices = db.collection('station_order_list'), data;
+            data = { userId: req.session.lastPage._id, orderId: req.body.orderId };
+            console.log(data)
+            devices.findOne(data, function (error, cursor) {
+                if (error) console.log("check order error:" + error);
+                if (cursor == null) {
+                    res.json({ code: 1006, message: "订单不存在！" });
+                } else {
+                    var typeText;
+                    switch (cursor.type) {
+                        case 1: typeText = "待收货";
+                            break;
+                        case 2: typeText = "已完成";
+                            break;
+                    }
+                    devices.update(data, { $set: { type: cursor.type + 1, typeText: typeText } }, function (error) {
+                        if (error) console.log("update order error:" + error);
+                        res.json({ code: 1, message: "提交成功！" });
+                    });
+                }
+            });
+        });
+    } else {
+        res.json({ code: 0, message: "请登录！" });
     }
 };
 //添加收藏
