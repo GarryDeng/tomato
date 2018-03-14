@@ -1,7 +1,7 @@
 /**
  * Created by some on 2017/4/19.
  */
-var ngTitle = "----农畉自家产品小卖群",
+var ngTitle = "----佳崽番茄网",
     indexTitle = "首页",
     goodsTitle = "商品列表页",
     loginUpTitle = "注册页",

@@ -9,7 +9,7 @@ var express = require('express'), //引入express模块
     app =express(),
 	server = http.createServer(app);//这是创建一个http服务来连接网站
 	MongoClient.connect(DB_URL);//这是操作mongodb node的操作模块 连接到mongodb去
-	app.use(express.static(__dirname));//指定静态html文件位置
+	app.use('/',express.static(__dirname + '/view'));//指定静态html文件位置
 	server.listen(8989);//监听端口
 
 	app.use(cookieParser());//使用到cookie-parser模块来连接客户端与服务端，因为http请求，是请求完后就会断开，所以需要session与cookie两者来维持
